@@ -7,33 +7,63 @@ body {
   margin: 15px 15px 15px 15px;
   }*/
 
-* {
+/** {
 box-sizing: border-box;
+}*/
+
+a:link{
+  text-decoration-line: none;
+  color: #6600FF;
 }
 
+a:hover{
+  text-decoration-line: none;
+  color: #a504fb;
+}
+
+/*
+a:active{
+  text-decoration-line: underline;
+  color: #67e01f;
+}*/
 
 .logo-citya{
     width: 30em;
     border: 1px 1px 1px 1px;
     padding:0;  
+    position:relative; 
+    float: left;
+    
+   /* z-index:1;*/ 
+    /*display: inline-block;*/
+   
   }
 
-
-  #nav a{
-    text-decoration-line: none;
-    color: #6600FF;
+  #nav{
+    /*margin: 0px;*/
+    padding: 50px;
+    position: relative;
+    float:right;
+  
+    
+      /*z-index:1;*/
   }
+
 
   #nav ul{
+      /*margin: 0px;
+      padding: 0px;*/
+      /*position: relative;
       float:right;
+      clear: left;*/
       
-  
-    /*list-style: none;*/
+    
+    list-style: none;
   }
 
   #nav ul li{
-    display: inline-block;
     
+    display: inline-block;
   }  
 
 #imgb-inicio{
@@ -44,17 +74,16 @@ box-sizing: border-box;
       height:100%;
   }
 
-#txtpp-inicio{
-  }
-
-p {
-	color: grey;
-	text-align: center;
+.txtpp-inicio p {
+	color: #939393;
+  text-align: center;
+  font-weight: bold;
   }
 
 h1{
   color: #6600FF;
-	align-content: center;
+  text-align: center;
+  font-style: italic;
   }
 
 .imgRedonda {
@@ -118,5 +147,6 @@ a.popup-cerrar {
 	a.popup-link {
 	    text-align: center;
 	    display: block;
-	    margin: 30px 0;
+      margin: 30px 0;
+      font-size: x-large
 	}
