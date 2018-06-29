@@ -1,3 +1,6 @@
+
+/////////////////////// ** ESTE NO VALE!!!! ** ////////////////////////
+
 //Parte CLIENTE
 
 $(document).ready(function () {

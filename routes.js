@@ -1,3 +1,6 @@
+
+////// routes cityaffinity //////
+
 var con = require('./config');
 var app = require('./app');
 
@@ -5,72 +8,89 @@ var app = require('./app');
 app.get('/', function (req, res) {
     res.render('index');
 });
+app.get('/registro', function (req, res) {
+    res.render('registro');
+});
+app.get('/gestionUsuario', function (req, res) {
+    res.render('gestion_usuario');
+});
 
 
 //Añadir proyectos
-app.post('/tareas/add', function (req, res) {
-    let sql = `INSERT INTO tareas (nombre,estado) VALUES ('${req.body.nombre}','${req.body.estado}')`;
-    // para formularios muy largos 
-    //let formulario = $("#insert").serialize()
+app.post('/registro/add', function (req, res) {
+    let sql = `INSERT INTO usuario (nombre, email, nacionalidad, password) VALUES ('${req.body.nombre}','${req.body.email}','${req.body.nacionalidad}','${req.body.password}')`;
     con.query(sql, function (err, result) {
         if (err) {
+            console.log(err);
             res.send(err);
+            console.log(err);
         }
         else {
-            let tareas = {
+            let usuario = {
                 id: result.insertId,
-                nombre: req.body.nombre,
-                estado: req.body.estado,
-                
+                body: req.body  
             }
-            res.send(tareas);
+            res.send(usuario);
         }
     });
+   
 });
 
+//CRUD-o
+
 //consultar proyectos
-app.get('/tareas', function (req, res) {
-    let sql = 'SELECT * from tareas';
+app.get('/gestion_usuario', function (req, res) { 
+    let sql = 'SELECT * from usuario';
     con.query(sql, function (err, result) {
         if (err) {
+            console.log(err);
             res.send(err);
         }
         else {
             res.send(result);
         }   
+
     });
 
-    app.post('/tareas/delete', function (req, res) {
-        let sql = `DELETE FROM tareas where id = '${req.body.id}'`;
-        con.query(sql, function (err, tareas) {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                res.send(tareas);
-            }
+    app.get('/modificar', function (req, res) {
+        let sql = `SELECT * FROM usuario where IdUsuario= '${req.query.id}'`;
+            con.query(sql, function (err, result) {
+                if (err) {
+                    res.send(err);
+                }
+                else {
+                    res.render('modificar',{
+                        resultado: result
+                    })
+                }
+            });
         });
-    });
+
+    // //borrar
+    // app.post('/gestion_usuario/delete', function (req, res) {
+    //     let sql = `DELETE FROM usuario where id = '${req.body.id}'`;
+    //     con.query(sql, function (err, usuario) {
+    //         if (err) {
+    //             res.send(err);
+    //         }
+    //         else {
+    //             res.send(usuario);
+    //         }
+    //     });
+    // });
     
-    //Modificar proyectos
-    app.post('/tareas/update', function (req, res) {
-        let sql = `UPDATE tareas set name='${req.body.nombre}' where id = '${req.body.id}'`;
-        con.query(sql, function (err, tareas) {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                 let tareas = {
-                     nombre: req.body.nombre
-                 }
-                res.send(tareas);
-            }
-        });
-    });
-    
+    // //Modificar proyectos
+    // app.post('/gestion_usuario/update', function (req, res) {
+    //     let sql = `UPDATE usuario set name='${req.body.nombre}' where id = '${req.body.id}'`;
+    //     con.query(sql, function (err, usuario) {
+    //         if (err) {
+    //             res.send(err);
+    //         }
+    //         else {
+    //              let tareas = {
+    //                  nombre: req.body.nombre
+    //              }
+    //             res.send(usuario);
+    //         }
+    //     });
 });
-
-/* OJO!!!! A cómo se llaman a las cosas o name, o nombre o lo que sea
-pero que tenga concordancia con mi bbdd porque sino sale undefined.
-`INSERT INTO proyectos (nombre) VALUES ('${req.body.nombre}')`
-*/

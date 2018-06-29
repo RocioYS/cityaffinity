@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var port = 5500;
+var port = 3000;
 var app = express();
 //configuracion de archivos
 app.use(express.static(__dirname + '/public'));
