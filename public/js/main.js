@@ -35,34 +35,43 @@ $(document).ready(function () {
 
     //Me traigo los datos desde la base de datos
 
-    $.get('http://localhost:3000/gestion_usuario', function (usuarios) {
-        console.log(usuarios);
-        usuarios.forEach(usuario => {
-            consulta.append(
-                '<tr>' + '<td id="' + usuario.idusuario + '">' + usuario.idusuario + '</td>' +
-                '<td>' + usuario.nombre + '</td>' +
-                '<td>' + usuario.email + '</td>' +
-                '<td>' + usuario.nacionalidad + '</td>' +  
-                '<td>' + '<button type="button" class="btn btn-success">' + 'Ver detalles </button>' +   
-                '<button type="button" class="btn btn-warning">' + 'Modificar </button>' +
-                '<button type="button" class="btn btn-danger">' + 'Borrar </button>' + '</td>' +'</tr>'
-
-            );
-            console.log(usuario.id);
+    var mostrar = $('#mostrarDatos')
+    $.get('http://localhost:3000/gestion_usuario', function (res){
+        res.forEach(usuario => {
+            mostrar.append('<tr  id="'+ usuario.idusuario + '">' + '<td>' + usuario.idusuario + '</td>' +
+            '<td>' + usuario.nombre + '</td>' +
+            '<td>' + usuario.email + '</td>' +
+            '<td>' + usuario.nacionalidad + '</td>' +
+            '<td>' + '<a href= modificar?id='+ usuario.idusuario + ' title=Modificar data-toggle=tooltip>' +
+            '<i class="far fa-edit">' + '</i>' + '</a>' +
+            '<a href="#" title= Eliminar data-toggle=tooltip class="eliminarDatos">' +
+            '<i class="far fa-trash-alt">' + '</i>' + '</a>' + '</td>' + '</tr>')
+         });
+    })
+    mostrar.on('click', '.eliminarDatos', function(usuario) {
+        let id = $(this).parent().parent().attr('id');
+        //console.log(id)
+        let file = $(this).parent().parent();
+        $.post('http://localhost:3000/gestion_usuario/delete', { id: id }, function(usuario) {
+        file.remove();
         });
-
     });
 
+    $.post('gestion_usuario/update', { id: id, estado: estado },
+            function (res) {
+                tarea.attr('data-estado', res.estado);
+                tarea.parent().parent().next().find('ul').append(tarea);
+            });
     //Eliminar usuario
     
-    var eliminar = $('#eliminar');
+    // var eliminar = $('#eliminar');
 
-    eliminar.on('click', '.eliminarProyectos', function () {
-        let id = $(this).parent().attr('id');
-        $(this).parent().remove();
-        $.post('http://localhost:3000/gestion_usuario/delete', { id: id }, function (usuarios) {
-        });
-    });
+    // eliminar.on('click', '.eliminarProyectos', function () {
+    //     let id = $(this).parent().attr('id');
+    //     $(this).parent().remove();
+    //     $.post('http://localhost:3000/gestion_usuario/delete', { id: id }, function (usuarios) {
+    //     });
+    // });
 
     //este validate daba problemas al comienzo, así que para el final
     $.validate({

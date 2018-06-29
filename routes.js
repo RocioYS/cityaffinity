@@ -15,6 +15,20 @@ app.get('/gestionUsuario', function (req, res) {
     res.render('gestion_usuario');
 });
 
+//Para modificar datos pero en render
+app.get('/modificar', function (req, res) {
+    let sql = `SELECT * FROM usuario where Idusuario= '${req.query.id}'`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                res.send(err);
+            }
+            else {
+                res.render('modificar',{
+                    resultado: result
+                })
+            }
+        });
+    });
 
 //Añadir proyectos
 app.post('/registro/add', function (req, res) {
@@ -52,19 +66,14 @@ app.get('/gestion_usuario', function (req, res) {
 
     });
 
-    app.get('/modificar', function (req, res) {
-        let sql = `SELECT * FROM usuario where IdUsuario= '${req.query.id}'`;
-            con.query(sql, function (err, result) {
-                if (err) {
-                    res.send(err);
-                }
-                else {
-                    res.render('modificar',{
-                        resultado: result
-                    })
-                }
-            });
+//Modificar tareas
+app.post('/gestion_usuario/modificar/update', function (req, res) {
+    let sql = `UPDATE usuario where id = '${req.body.id}'`;
+    con.query(sql, function (err, result) {
+       
+            res.send(usuario);
         });
+});
 
     // //borrar
     // app.post('/gestion_usuario/delete', function (req, res) {
@@ -94,3 +103,6 @@ app.get('/gestion_usuario', function (req, res) {
     //         }
     //     });
 });
+
+module.exports = con;
+module.exports = app;

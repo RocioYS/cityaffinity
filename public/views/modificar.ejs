@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar usuario</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
+    <link href="../css/fontawesome-all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="../js/lib/jquery-3.2.1.slim.min.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .wrapper{
+            width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
+        <a class="navbar-brand" href="#">City Affinity</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+          <ul class="navbar-nav ml-auto float-right">
+            <li class="nav-item active">
+                <a class="nav-link" href="gestion_usuario.html">Gestión de usuarios
+                    <span class="sr-only">(current)</span>
+                </a>
+                
+                <!-- <a class="nav-link" href="nuevo.html">Añadir
+                    <span class="sr-only">(current)</span>
+                </a> -->
+                
+            </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#">Anfitriones</a>
+              </li> -->
+           
+          </ul>
+         
+        </div>
+        
+    </nav>
+
+    <div id="formulario">
+        <form id="insert">
+
+            <div class=" form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+                <label for="nombre"></label>
+                <input name="nombre" value="<%= resultado[0].nombre%>" type="text" class="form-control" id="nombreUsuario" data-validation="required alphanumeric" placeholder="Nombre">
+                <br/>
+            </div>
+
+            <div class="form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+                <label for="email"></label>
+                <input name="email" value="<%= resultado[0].email%>" type="text" id="emailUsuario" class="form-control" data-validation="required email" placeholder="Email">
+                <br/>
+            </div>
+
+            <div class="form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+                <label for="nacionalidad"></label>
+                <input name="nacionalidad" value="<%= resultado[0].nacionalidad%>" type="text" id="nacionalidadlUsuario" class="form-control" data-validation="required alphanumeric"
+                 placeholder="Nacionalidad">
+                <br/>
+            </div>
+
+
+            <div class="form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+                <label for="password"></label>
+                <input type="password" value="<%= resultado[0].password%>" class="form-control" data-validation="length" data-validation-length="min3" placeholder="Contraseña"
+                 name="password_confirmation">
+            </div>
+
+            <div class="form-group col-md-8" style="height: 82px; margin-bottom: 30px;">
+                <label for="confirm_password"></label>
+                <input type="password" value="<%= resultado[0].password%>" class="form-control" data-validation="confirmation" placeholder="Repetir Contraseña" name="password">
+            </div>
+
+
+            <button type="submit" class="btn btn-secondary" id="enviarInsert">Modificar</button>
+            <!-- Que sea un submit por dios! -->
+            <!-- <div id="avion">
+                <img src="../img/icono_avion.jpg" class="avion">
+            </div> -->
+        </form>
+    </div>
+   
+</body>
+</html>
