@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Registro</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../css/cityestilo.css">
+	<script src="../js/lib/jquery.js"></script>
+	<script src="../js/lib/jquery-3.3.1.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="logo-citya">
+			<a href="#">
+				<img src="../img/city-affinity-logo.svg">
+			</a>
+		</div>
+	</nav>
+
+	
+		
+		<!-- <div id="nav">
+					<ul>
+						<li><a href="../index.html"><b>Inicio | </b></a></li>
+						<li><a href="../filosofia/index.html"><b>Nuestra filosofía | </b></a></li>
+						<li><a href="../vosotros/index.html"><b>Vosotros | </b></a></li>
+						<li><a href="../ciudades/index.html"><b>Ciudades | </b></a></li>
+						<li><a href="index.html"><b>Contacto</b></a></li>
+					</ul>
+				</div>	
+		 -->
+
+		<!-- <div class="txtpp-inicio">
+			<img src="../img/cityaffinity-contacto.jpg" alt="Cuéntanos tu experiencia" width="100%" id="imgb-inicio">
+
+	
+
+		</div> -->
+
+	
+		<!-- Formulario -->
+
+		
+		<a href="#popup" class="popup-link"><i class="fas fa-user-plus fa-4x iconoreg" alt="registro"></i></a>
+		
+		
+		<div id="foto">
+			<img src="../img/cityaffinity-vosotros-fondo.jpg" class="img-fluid">
+		</div>
+			
+		
+		<!-- Pop Up -->
+		<div class="modal-wrapper" id="popup">
+			<div class="popup-contenedor">
+				
+				<div id="formulario">
+					<form id="insert">
+
+						<div class=" form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+							<label for="nombre"></label>
+							<input name="nombre" type="text" class="form-control" id="nombreUsuario" data-validation="required alphanumeric" placeholder="Nombre">
+							<br/>
+						</div>
+
+						<div class="form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+							<label for="email"></label>
+							<input name="email" type="text" id="emailUsuario" class="form-control" data-validation="required email" placeholder="Email">
+							<br/>
+						</div>
+
+						<div class="form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+							<label for="nacionalidad"></label>
+							<input name="nacionalidad" type="text" id="nacionalidadlUsuario" class="form-control" data-validation="required alphanumeric"
+							 placeholder="Nacionalidad">
+							<br/>
+						</div>
+
+
+						<div class="form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+							<label for="password"></label>
+							<input type="password" class="form-control" data-validation="length" data-validation-length="min3" placeholder="Contraseña"
+							 name="password_confirmation">
+						</div>
+
+						<div class="form-group col-md-8" style="height: 82px; margin-bottom: 30px;">
+							<label for="confirm_password"></label>
+							<input type="password" class="form-control" data-validation="confirmation" placeholder="Repetir Contraseña" name="password">
+						</div>
+
+
+						<button type="submit" class="btn btn-secondary" id="enviarInsert">Registrarse</button>
+						<!-- Que sea un submit por dios! -->
+						<!-- <div id="avion">
+							<img src="../img/icono_avion.jpg" class="avion">
+						</div> -->
+					</form>
+				</div>
+
+					<a class="popup-cerrar" href="#">X</a>
+			</div>
+		</div>
+		<!-- <form action="index.html" method="post">
+			<div class="form-group">
+				<label>Nombre</label>
+				<input type="text" name="nombre" class="form-control">
+			  
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input type="text" name="email" class="form-control">
+			</div>
+
+			<div class="form-group">
+				<label>Nacionalidad</label>
+				<input type="text" name="email" class="form-control">
+			</div> -->
+
+		<!-- <div class="form-group">
+				<label>Contraseña</label>
+				<input type="password" name="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Confirma la contraseña</label>
+				<input type="password" name="confirm_password" class="form-control">-->
+ 
+
+
+
+
+
+
+</body>
+
+<!-- <footer>
+			<div class="pie-amarillo">
+			
+			
+			<table cellspacing="10" cellpadding="10" width="100%" align="center">
+				<tr>
+					<td>
+						<h4>City Affinity 2018. Todos los derechos reservados.</h4>
+					</td>
+					
+					
+					<td align="right">
+						
+						<a href="https://es-es.facebook.com/" target="_blank"><img src="../img/facebook-logo.svg" width="5%"></a>
+						<a href="https://www.instagram.com/?hl=es" target="_blank"><img src="../img/logo-de-instagram.svg" width="5%"></a>
+						<a href="https://www.youtube.com/?hl=es&gl=ES" target="_blank"><img src="../img/youtube.svg" width="5%"></a>
+					
+					
+						</td>
+
+					</tr>
+				
+
+			</table>
+			</div>
+
+		</footer> -->
+
+</body>
+
+</html>
