@@ -22,12 +22,12 @@ $(document).ready(function () {
         });
     });
 
-
+   
 
     //////CONSULTA USUARIOS CRUD
 
     var consulta = $('#consultar');
-    
+
     // consulta.on('click', function () {
     //     let data = $('#nombre').val();
     //     let data2 = $('#email').val();
@@ -36,48 +36,78 @@ $(document).ready(function () {
     //Me traigo los datos desde la base de datos
 
     var mostrar = $('#mostrarDatos')
-    $.get('http://localhost:3000/gestion_usuario', function (res){
+    $.get('http://localhost:3000/gestion_usuario', function (res) {
         res.forEach(usuario => {
-            mostrar.append('<tr  id="'+ usuario.idusuario + '">' + '<td>' + usuario.idusuario + '</td>' +
-            '<td>' + usuario.nombre + '</td>' +
-            '<td>' + usuario.email + '</td>' +
-            '<td>' + usuario.nacionalidad + '</td>' +
-            '<td>' + '<a href= modificar?id='+ usuario.idusuario + ' title=Modificar data-toggle=tooltip>' +
-            '<i class="far fa-edit">' + '</i>' + '</a>' +
-            '<a href="#" title= Eliminar data-toggle=tooltip class="eliminarDatos">' +
-            '<i class="far fa-trash-alt">' + '</i>' + '</a>' + '</td>' + '</tr>')
-         });
+            mostrar.append('<tr  id="' + usuario.idusuario + '">' + '<td>' + usuario.idusuario + '</td>' +
+                '<td>' + usuario.nombre + '</td>' +
+                '<td>' + usuario.email + '</td>' +
+                '<td>' + usuario.nacionalidad + '</td>' +
+                '<td>' + '<a href= modificar?id=' + usuario.idusuario + ' title=Modificar data-toggle=tooltip>' +
+                '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#" title= Eliminar data-toggle=tooltip class="eliminarDatos">' +
+                '<i class="far fa-trash-alt">' + '</i>' + '</a>' + '</td>' + '</tr>')
+        });
     })
-    mostrar.on('click', '.eliminarDatos', function(usuario) {
+
+    mostrar.on('click', '.eliminarDatos', function (usuario) {
         let id = $(this).parent().parent().attr('id');
         //console.log(id)
         let file = $(this).parent().parent();
-        $.post('http://localhost:3000/gestion_usuario/delete', { id: id }, function(usuario) {
-        file.remove();
+        $.post('http://localhost:3000/gestion_usuario/delete', { id: id }, function (usuario) {
+            file.remove();
         });
     });
 
-    $.post('gestion_usuario/update', { id: id, estado: estado },
-            function (res) {
-                tarea.attr('data-estado', res.estado);
-                tarea.parent().parent().next().find('ul').append(tarea);
-            });
-    //Eliminar usuario
-    
-    // var eliminar = $('#eliminar');
-
-    // eliminar.on('click', '.eliminarProyectos', function () {
-    //     let id = $(this).parent().attr('id');
-    //     $(this).parent().remove();
-    //     $.post('http://localhost:3000/gestion_usuario/delete', { id: id }, function (usuarios) {
+    // $.post('gestion_usuario/update', { id: id, estado: estado },
+    //     function (res) {
+    //         tarea.attr('data-estado', res.estado);
+    //         tarea.parent().parent().next().find('ul').append(tarea);
     //     });
-    // });
 
-    //este validate daba problemas al comienzo, así que para el final
-    $.validate({
-        lang: 'es',
-        modules: 'security'
+
+        
+    
+        //---------------------Ejemplo para el middleware. Subiendo fotos a través de formulario------------//
+        // $('#insert').on('submit', function (e) {
+        // e.preventDefault();
+        // let formulario = new FormData($(this)[0]);
+        // $.ajax({
+        //     type: 'POST',
+        //     url: '/registro/add',
+        //     data: formulario,
+        //     contentType: false,
+        //     cache: false,
+        //     processData: false
+        // });
+        //-------------------------------------------------------------------------------------------------//
+
+
+       $.validate({
+            lang: 'es',
+            modules: 'security'
+    
+        });      
+    
+        //Eliminar usuario
+
+    var eliminar = $('#eliminar');
+
+    eliminar.on('click', '#eliminar', function () {
+        let id = $(this).parent().attr('id');
+        $(this).parent().remove();
+        $.post('http://localhost:3000/gestion_usuario/delete', { id: id }, function (usuarios) {
+        });
+    });
 
     });
 
-});
+
+
+   
+
+    
+
+    
+
+//});
+
