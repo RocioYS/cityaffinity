@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿
+<!-- Gestión de usuario -->
+
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -17,9 +20,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+    <!--///// MENÚ /////-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="../img/city-affinity-logo.svg">
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,40 +39,41 @@
                 </li>
             </ul>
         </div>
-
     </nav>
-
+    
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="clearfix mb-3">
                     <h2 class="float-left">Gestión de usuarios</h2>
                     <!-- <a href="#" class="btn btn-success float-right">Consultar</a> -->
-
                 </div>
+    
+    <!--///// FIN MENÚ /////-->
 
 
-                <!--Aquí como en el ejercicio de tarea que se vayan añadiendo los usuarios a la tabla-->
+    <!--///// tabla /////-->
 
-                <table class='table table-bordered table-striped'>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Nacionalidad</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
+    <table class='table table-bordered table-striped'>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Nacionalidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
 
-                    <tbody id="mostrarDatos">
+        <tbody id="mostrarDatos">
 
-                    </tbody>
-                </table>
+        </tbody>
+    </table>
 
             </div>
         </div>
     </div>
+    <!--///// fin tabla /////-->
 
     <!--///// DELETE /////-->
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
