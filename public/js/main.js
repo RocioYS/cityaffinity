@@ -7,14 +7,40 @@ $(document).ready(function () {
 
 
     //-------------FORMULARIO DE REGISTRO----------------//
+    
     var boton = $('#enviarInsert');
+    var formulario = $('#formulario');
+    boton.on('click', function () {
+        let data = $('#insert').serialize();
+        $.post('/registro', data, function (res) {
+            alert(res.nombre + ' ha sido registrado correctamente');
+        });
+    });
+    
+
+    //---------------------LOGIN------------------------//
+
+    var loginButton = $('#loginButton');
+    var loginForm = $('#loginForm');
+    loginButton.on('click', function () {
+        console.log('err')
+        let data = loginForm.serialize();
+        $.post('/login', data, function (res) {
+       
+        });
+    });
+    
+    
+    
+    //------------------antiguo
+     /*var boton = $('#enviarInsert');
 
     //botón de html tiene nombre insert. Serialize para coger todos los datos del formulario.
     boton.on('click', function () {
         let data = $('#insert').serialize();
 
         $.post('http://localhost:3000/registro/add', data, function (usuario) {//mostrar la lista
-            lista.append(usuario.body.id + ',' + usuario.body.nombre + ',' + usuario.body.email + ',' + usuario.body.nacionalidad + ',' + usuario.body.password
+            lista.append(usuario.body.id + ',' + usuario.body.nombre + ',' + usuario.body.apellido + ',' + usuario.body.email + ',' + usuario.body.nacionalidad + ',' + usuario.body.password
             );
             //console.log(usuario.id);
         });
@@ -23,7 +49,8 @@ $(document).ready(function () {
         // $.get('http://localhost:3000/registro/', function (usuario) {
         //     console.log(usuario)
         // });
-    });
+    });*/
+    //-----------------
 
    
 
@@ -43,6 +70,7 @@ $(document).ready(function () {
         res.forEach(usuario => {
             mostrar.append('<tr  id="' + usuario.idusuario + '">' + '<td>' + usuario.idusuario + '</td>' +
                 '<td>' + usuario.nombre + '</td>' +
+                '<td>' + usuario.apellido + '</td>' +
                 '<td>' + usuario.email + '</td>' +
                 '<td>' + usuario.nacionalidad + '</td>' +
                 '<td>' + '<a href= modificar?id=' + usuario.idusuario + ' title=Modificar data-toggle=tooltip>' +
@@ -52,8 +80,27 @@ $(document).ready(function () {
         });
     })
 
-    //Eliminar usuarios
-    mostrar.on('click', '.eliminarDatos', function (usuario) {
+   
+    //Actualizar datos de usuario
+    var modificar = $('#botonModificar')
+    modificar.on('click', function(){
+        let modificado = $('#modificar').serialize();
+        $.post('http://localhost:3000/gestion_usuario/modificar/update', modificado, { id: id, nombre: nombre, apellido: apellido, email: email, nacionalidad: nacionalidad, password: password },
+        function (usuario) {});
+            modificado.remove();
+        });
+    });
+
+//Modificar y actualizar datos de usuario
+   $('#botonActualizar').on('click', function () {
+    let formModificado = $('#modificar').serialize();
+    $.post('http://localhost:3000/modificar',formModificado, function (usuario) { });
+
+    });
+
+
+     //Eliminar usuarios
+     mostrar.on('click', '.eliminarDatos', function (usuario) {
         let id = $(this).parent().parent().attr('id');
         //console.log(id)
         let file = $(this).parent().parent();
@@ -61,25 +108,6 @@ $(document).ready(function () {
             file.remove();
         });
     });
-
-
-    //Actualizar datos de usuario
-    var modificar = $('#botonModificar')
-    modificar.on('click', function(){
-        let modificado = $('#modificar').serialize();
-        $.post('http://localhost:3000/gestion_usuario/modificar/update', modificado, { id: id, nombre: nombre, email: email, nacionalidad: nacionalidad, password: password },
-        function (usuario) {});
-            modificado.remove();
-        });
-    });
-
-
-
-        // $('#modificaplayer').on('click', function() {
-        //     let formModificado = $('#formularioplayer').serialize();
-        //     $.post('http://localhost:3000/jugador/modificar', formModificado, function(jugador) {});
-        //     formModificado.remove();
-        // });
 
         
     
@@ -98,11 +126,11 @@ $(document).ready(function () {
         //-------------------------------------------------------------------------------------------------//
 
 
-       $.validate({
-            lang: 'es',
-            modules: 'security'
+    //    $.validate({
+    //         lang: 'es',
+    //         modules: 'security'
     
-        });      
+    //     });      
     
 
 //});

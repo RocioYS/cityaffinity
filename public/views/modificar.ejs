@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="../js/lib/jquery-3.2.1.slim.min.js"></script>
     <script src="../js/lib/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <!-- <script src="../js/bootstrap.min.js"></script> -->
     <style type="text/css">
         .wrapper{
             width: 500px;
@@ -43,7 +43,18 @@
 
             <div class=" form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
                 <label for="nombre"></label>
+                <input type="text" name="id" value="<%=resultado[0].idusuario%>"/><br/>
+            </div>
+
+            <div class=" form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+                <label for="nombre"></label>
                 <input name="nombre" value="<%= resultado[0].nombre%>" type="text" class="form-control" id="nombreUsuario" data-validation="required alphanumeric" placeholder="Nombre">
+                <br/>
+            </div>
+
+            <div class=" form-group col-md-8" style="height: 82px; margin-bottom: 0px;">
+                <label for="apellido"></label>
+                <input name="apellido" value="<%= resultado[0].apellido%>" type="text" class="form-control" id="apellidoUsuario" data-validation="required alphanumeric" placeholder="Apellido">
                 <br/>
             </div>
 
@@ -73,7 +84,7 @@
             </div>
 
 
-            <button type="button" class="btn btn-secondary" id="botonModificar">Modificar</button>
+            <button type="button" class="btn btn-secondary" id="botonActualizar">Modificar</button>
             
         </form>
     </div>
